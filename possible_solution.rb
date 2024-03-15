@@ -1,9 +1,6 @@
 require "http"
 require "json"
 
-ENV.fetch("GMAPS_KEY")
-ENV.fetch("PIRATE_WEATHER_KEY")
-
 line_width = 40
 
 puts "=" * line_width
@@ -11,8 +8,8 @@ puts "Will you need an umbrella today?".center(line_width)
 puts "=" * line_width
 puts
 puts "Where are you?"
-user_location = gets.chomp
-# user_location = "Saint Paul"
+# user_location = gets.chomp
+ user_location = "Saint Paul"
 puts "Checking the weather at #{user_location}...."
 
 # Get the lat/lng of location from Google Maps API
@@ -21,8 +18,8 @@ gmaps_key = ENV.fetch("GMAPS_KEY")
 
 gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{user_location}&key=#{gmaps_key}"
 
-# p "Getting coordinates from:"
-# p gmaps_url
+p "Getting coordinates from:"
+p gmaps_url
 
 raw_gmaps_data = HTTP.get(gmaps_url)
 
@@ -48,8 +45,8 @@ pirate_weather_key = ENV.fetch("PIRATE_WEATHER_KEY")
 
 pirate_weather_url = "https://api.pirateweather.net/forecast/#{pirate_weather_key}/#{latitude},#{longitude}"
 
-# p "Getting weather from:"
-# p pirate_weather_url
+ p "Getting weather from:"
+ p pirate_weather_url
 
 raw_pirate_weather_data = HTTP.get(pirate_weather_url)
 
