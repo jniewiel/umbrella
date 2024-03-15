@@ -1,6 +1,9 @@
 require "http"
 require "json"
 
+ENV.fetch("GMAPS_KEY")
+ENV.fetch("PIRATE_WEATHER_KEY")
+
 line_width = 40
 
 puts "=" * line_width
